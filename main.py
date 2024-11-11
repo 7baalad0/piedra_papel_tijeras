@@ -55,5 +55,12 @@ def partida():
             return "Empate."
     else:
         return "Escoge una opcion válida."
+    
+    
+def jugar():
+    global contador_jugador, contador_maquina
 
-print(partida(), "Jugador :", contador_jugador, "Maquina:", contador_maquina)
+    while contador_jugador < 3 and contador_maquina < 3:
+        print(partida(), "Jugador:", contador_jugador, "Máquina:", contador_maquina)
+
+jugar()
