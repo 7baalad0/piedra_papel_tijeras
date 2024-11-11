@@ -68,13 +68,19 @@ def jugar():
         print("La máquina ha ganado el juego.")
     
     
-    jugar_de_nuevo = input("¿Quieres jugar de nuevo? (sí/no): ").lower()
-    if jugar_de_nuevo == "sí":
-        contador_jugador = 0
-        contador_maquina = 0
-        jugar()
-    else:
-        print("Gracias por jugar.")
+   
+    jugar_de_nuevo = ""
+    while jugar_de_nuevo !="s" and jugar_de_nuevo !="n":
+        jugar_de_nuevo = input("¿Quieres jugar de nuevo? (s/n): ").lower()
+        if jugar_de_nuevo == "s":
+            contador_jugador = 0
+            contador_maquina = 0
+            jugar()
+        elif jugar_de_nuevo == "n":
+            print("Bien jugado, ¡hasta la próxima!")
+        else:
+            print("No te he entendido. Introduce un valor correcto")
+            
 
 
 jugar()
