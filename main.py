@@ -23,7 +23,7 @@ def partida():
     jugador = eleccion_jugador()
     maquina = eleccion_maquina()
 
-    print("Jugador:", jugador," Máquina:", maquina)  
+    print("Jugador:", jugador," Máquina:", maquina) 
 
     if jugador == "piedra":
         if maquina == "piedra":
@@ -55,7 +55,7 @@ def partida():
             return "Empate."
     else:
         return "Escoge una opcion válida."
-    
+
 def jugar():
     global contador_jugador, contador_maquina
 
@@ -67,4 +67,14 @@ def jugar():
     elif contador_maquina == 3:
         print("La máquina ha ganado el juego.")
     
+    
+    jugar_de_nuevo = input("¿Quieres jugar de nuevo? (sí/no): ").lower()
+    if jugar_de_nuevo == "sí":
+        contador_jugador = 0
+        contador_maquina = 0
+        jugar()
+    else:
+        print("Gracias por jugar.")
+
+
 jugar()
