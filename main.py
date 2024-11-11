@@ -56,11 +56,15 @@ def partida():
     else:
         return "Escoge una opcion válida."
     
-    
 def jugar():
     global contador_jugador, contador_maquina
 
     while contador_jugador < 3 and contador_maquina < 3:
         print(partida(), "Jugador:", contador_jugador, "Máquina:", contador_maquina)
 
+    if contador_jugador == 3:
+        print("¡Felicidades! Has ganado el juego.")
+    elif contador_maquina == 3:
+        print("La máquina ha ganado el juego.")
+    
 jugar()
