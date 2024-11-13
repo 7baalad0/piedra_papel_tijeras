@@ -19,7 +19,7 @@ def eleccion_jugador() -> str:
     
 def eleccion_maquina(opcionjugador) -> str:
     
-    if contador_jugador > contador_maquina:
+    if maquina_tramposa and contador_jugador > contador_maquina:
         if opcionjugador == "piedra":
             return "papel"  
         elif opcionjugador == "papel":
@@ -75,6 +75,14 @@ def partida(opcionjugador , maquina, contador_maquina, contador_jugador):
 
 jugar = "s"
 while jugar == "s": 
+    
+    activar_trampa = input("¿Quieres activar la máquina tramposa? (s/n): ").lower()
+    if activar_trampa == "s":
+        maquina_tramposa = True
+        print("Máquina tramposa activada.")
+    else:
+        maquina_tramposa = False
+        print("Se ha desactivado la máquina tramposa.")
 
     while contador_jugador < 3 and contador_maquina < 3:
         opcionjugador = eleccion_jugador()
