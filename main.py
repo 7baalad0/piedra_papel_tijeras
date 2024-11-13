@@ -3,50 +3,56 @@ contador_jugador = 0
 contador_maquina = 0
     
 def eleccion_jugador() -> str:
-    opcionjugador = input("Escoge Piedra, Papel o Tijeras: ").lower()
-    return opcionjugador
+    return input("Escoge Piedra, Papel o Tijeras: ").lower()
+    
+def eleccion_maquina(opcionjugador) -> str:
+    
+    if contador_jugador > contador_maquina:
+        if opcionjugador == "piedra":
+            return "papel"  
+        elif opcionjugador == "papel":
+            return "tijeras"  
+        elif opcionjugador == "tijeras":
+            return "piedra"  
+    
+    else:
+        random_maquina = random.randint(0,2)
+        if random_maquina == 0:
+            return "piedra"
+        elif random_maquina == 1:
+            return "papel"
+        elif random_maquina == 2:
+            return "tijeras"
 
-
-def eleccion_maquina() -> str:
-    random_maquina = random.randint(0,2)
-    if random_maquina == 0:
-        opcion_maquina = "piedra"
-    if random_maquina == 1:
-        opcion_maquina = "papel"
-    if random_maquina == 2:
-        opcion_maquina = "tijeras"
-    return opcion_maquina
-
-
-def partida(opcionjugador, maquina, contador_maquina, contador_jugador):
+def partida(opcionjugador , maquina, contador_maquina, contador_jugador):
  
-    print("Jugador:", opcionjugador," Máquina:", maquina) 
+    print("Jugador:", opcionjugador ," Máquina:", maquina) 
 
     if opcionjugador == "piedra":
         if maquina == "piedra":
             resultado = "Empate."
         elif maquina == "papel":
-            contador_maquina = contador_maquina + 1
+            contador_maquina += 1
             resultado = "Has perdido..."
         elif maquina == "tijeras":
-            contador_jugador = contador_jugador + 1
+            contador_jugador += 1
             resultado = "¡Tú ganas!"
     elif opcionjugador == "papel":
         if maquina == "piedra":
-            contador_jugador = contador_jugador + 1
+            contador_jugador += 1
             resultado = "¡Tú ganas!"
         elif maquina == "papel":
             resultado = "Empate."
         elif maquina == "tijeras":
-            contador_maquina = contador_maquina + 1
+            contador_maquina +=1
             resultado = "Has perdido..."
 
     elif opcionjugador == "tijeras":
         if maquina == "piedra":
-            contador_maquina = contador_maquina + 1
+            contador_maquina +=1
             resultado = "Has perdido..."
         elif maquina == "papel":
-            contador_jugador = contador_jugador + 1
+            contador_jugador +=1
             resultado = "¡Tú ganas!"
         elif maquina == "tijeras":
             resultado = "Empate."
@@ -60,8 +66,8 @@ while jugar == "s":
 
     while contador_jugador < 3 and contador_maquina < 3:
         opcionjugador = eleccion_jugador()
-        maquina = eleccion_maquina()
-        contador_maquina, contador_jugador, resultado = partida(opcionjugador, maquina, contador_maquina, contador_jugador)
+        maquina = eleccion_maquina(opcionjugador )
+        contador_maquina, contador_jugador, resultado = partida(opcionjugador , maquina, contador_maquina, contador_jugador)
         print(resultado, "Jugador:", contador_jugador, "Máquina:", contador_maquina)
         
     if contador_jugador == 3:
@@ -69,8 +75,6 @@ while jugar == "s":
     elif contador_maquina == 3:
         print("Vaya, has perdido...")
     
-    
-   
     jugar_de_nuevo = ""
     while jugar_de_nuevo !="s" and jugar_de_nuevo !="n":
         jugar_de_nuevo = input("¿Quieres la revancha? (s/n): ").lower()
