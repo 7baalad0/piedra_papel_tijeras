@@ -3,10 +3,14 @@ contador_jugador = 0
 contador_maquina = 0
 
 def frase_ganar():
+    if contador_jugador == 3 and contador_maquina == 0:  
+        return "Menuda paliza histórica me acabas de meter. Mi enhorabuena"
     frase = ["Esta vez ganas. Pura potra", "Esa no me la esperaba. Tú ganas", "Ganaste. Aunque me estaba dejando, échate una revancha y verás"]
     return random.choice(frase)
 
 def frase_perder():
+    if contador_maquina == 3 and contador_jugador == 0: 
+        return "Vaya, perder así es incluso mas díficil que ganar. Siéntete orgulloso"
     frase = ["Has perdido. Muy predecible todo.", "Pierdes... ¿De verdad pensabas que no me la venía venir?", "Perdiste. Necesito un rival decente..."]
     return random.choice(frase)
     
@@ -41,7 +45,7 @@ def partida(opcionjugador , maquina, contador_maquina, contador_jugador):
             resultado = "Empate."
         elif maquina == "papel":
             contador_maquina += 1
-            resultado = "Has perdido la ronda"
+            resultado = "Has perdido la ronda."
         elif maquina == "tijeras":
             contador_jugador += 1
             resultado = "¡Ganas esta ronda!"
@@ -53,12 +57,12 @@ def partida(opcionjugador , maquina, contador_maquina, contador_jugador):
             resultado = "Empate."
         elif maquina == "tijeras":
             contador_maquina +=1
-            resultado = "Has perdido la ronda"
+            resultado = "Has perdido la ronda."
 
     elif opcionjugador == "tijeras":
         if maquina == "piedra":
             contador_maquina +=1
-            resultado = "Has perdido la ronda"
+            resultado = "Has perdido la ronda."
         elif maquina == "papel":
             contador_jugador +=1
             resultado = "¡Ganas esta ronda!"
